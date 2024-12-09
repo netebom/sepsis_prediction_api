@@ -74,7 +74,7 @@ async def search_single(
     ins: str = Form(...),
     model: str = Form(...)
     ):
-    
+
     model_type = model
     data: SepsisFeatures = SepsisFeatures(PRG=float(prg), PL=float(pl),PR=float(pr), SK=float(sk), TS=float(ts),M11=float(m11), BD2=float(bd2), Age=float(age), Insurance=int(ins))
     return await process_search(data, model_type)
@@ -115,5 +115,5 @@ async def process_search(data, model):
         return {"error": str(e)}
 
 
-if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
