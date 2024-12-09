@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css')}}"/>
+     </head>
+     <body>
+        <main>
+            <p>API usage at <a href="/docs">/docs</a> supports multiple data input</p>
+                <small>The following model types are available: KNN,RF, SVM and XGB</small>
+
+                Or use the form below for a single prediction.
+            <form action="/predict-single" method="post">
+                <label>Plasma glucose level<input required="required" type="number" name="prg"></label>
+                <label>Platelet count<input required="required" type="number" name="pl"></label>
+                <label>Pulse rate<input required="required" type="number" name="pr"></label>
+                <label>Skin Temperature<input required="required" type="number" name="sk"></label>
+                <label>Total Serum Protein<input required="required" type="number" name="ts"></label>
+                <label>Body Mass Index<input required="required" type="number" name="m11"></label>
+                <label>Blood Work Result-4 (mu U/ml)<input required="required" type="number" name="bd2"></label>
+                <label>Patient's age (years)<input required="required" type="number" name="age"></label>
+                <label>Insurance <select name="ins">
+                    <option value="0">Not Insured</option>
+                    <option value="1">Insured</option>
+                </select></label>
+                <label>Selct Model for prediction <select name="model">
+                    <option value="KNN">K-Nearest Neighbours</option>
+                    <option value="RF">Random Forest</option>
+                    <option value="SVM">Support Vector Machine</option>
+                    <option value="XGB">XG-Boost</option>
+                </select></label>
+                <button type="submit" class="submit-btn">Predict</button>
+                
+            </form>
+        </main>
+        
+     </body>
+</html>
