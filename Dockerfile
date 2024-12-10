@@ -1,15 +1,22 @@
-# Use an official Python 3.9 image as the base
-FROM python:3.9-slim
+FROM python:3.12-slim AS compiler
+ENV PYTHONUNBUFFERED=1
 
-# Set the working directory to here
-WORKDIR .
+WORKDIR /app/
 
-# Copy requirements.txt and install dependencies
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN python -m venv /opt/venv
+# Enable venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-# Copy your application code
-COPY . .
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install -Ur requirements.txt
 
+FROM python:3.12-slim AS runner
+WORKDIR /app/
+COPY --from=compiler /opt/venv /opt/venv
+
+# Enable venv
+ENV PATH="/opt/venv/bin:$PATH"
+COPY . /app/
+EXPOSE 8000
 # Set the command to run your application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
