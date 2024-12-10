@@ -16,9 +16,9 @@ With your FastAPI running, you feed it the expected (set of) data, select a mode
 You can also deploy your app at Docker Hub. Docker Hub lets you deploy your FastAPI in a containerized form with everything in the right place.
 
 
-![Render](screenshot/Render1.jpg)  
+![Render](screenshots/Render1.jpg)  
 
-![Render](screenshot/Render2.jpg)  
+![Render](screenshots/Render2.jpg)  
 
 ![Dockerhub](screenshots/Dockerhub.jpg)
 
